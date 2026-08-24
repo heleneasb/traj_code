@@ -1,0 +1,54 @@
+================================================================================
+Figures for "Gyre dynamics modulate northward throughput of Gulf Stream water to subpolar latitudes" 
+===============================================================================
+Code accompanying the Lagrangian particle trajectory dataset [DOI TO DATSET]
+
+Repository: https://github.com/heleneasb/traj_code
+
+OVERVIEW
+--------
+Code producing the figures in the manuscript "Gyre dynamics modulate northward throughput of Gulf Stream water to subpolar latitudes". 
+
+REQUIREMENTS
+-------------
+Language : Python 3.9.13
+
+Python packages:
+    numpy==1.26.4
+    xarray==2024.3.0
+    pandas==2.2.3 
+    cartopy==0.20.3 
+    matplotlib==3.5.1
+    gsw==3.6.20 
+    scipy==1.10.1 
+    dask==2024.8.0 
+
+External datasets required (not included in this repository):
+    - Lagrangian trajectory data from experiment 'gulfstream_GO8p7'
+      Source/access: [DOI TO DATASET]
+    - GO8p7-eORCA12-JRA55 ocean hindcast output
+      Variables: meridional velocity, zonal velocity, conservative temperature, absolute salinity
+      Source/access: [https://dx.doi.org/10.5285/399b0f762a004657a411a9ea7203493a]
+    - JRA-55 atmospheric reanalysis
+      Variable: Sea level pressure
+      Source/access: [https://doi.org/10.5065/D60G3H5B]
+
+HOW TO RUN
+------------
+IMPORTANT: The .py scripts must be run BEFORE the .ipynb notebooks. The .py
+scripts perform the required data preparation/processing steps that the
+notebooks depend on.
+
+Step 1 -- Download required datasets
+
+Step 2 -- Run the Python scripts, in order
+
+Step 3 -- Run the notebooks
+
+CONTACT
+---------
+[Helene Asbjørnsen, University of Bergen, h.asbjornsen@uib.no]
+
+================================================================================
+END OF README
+================================================================================
