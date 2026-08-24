@@ -18,23 +18,22 @@ import dask.config
 import warnings
 warnings.filterwarnings("ignore")
 
+#os.environ["OMP_NUM_THREADS"] = "8" 
+
 # Depth bins 50m
 dep_bins = [0,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000,1050,1100]
 exp_Dbins = np.arange(1, len(dep_bins))
 
-
-# Loop over _run.cvs files
-data_path_part = '/Data/gfi/scratch/has078/Tracmass_working_dir/output/gulfstream_GO8p7/'
+data_path_part = 'YOUR_TRAJ_DATA_PATH'
 
 column_names = ['id', 'x', 'y', 'z', 'vt', 'time', 'wall','temp','salt']
 cols_needed = ['id','y','z','vt','time']
 
-#_run files in folder
+# .csv files in folder
 files = [os.path.join(data_path_part, f) for f in os.listdir(data_path_part) if f.startswith('traj_') and f.endswith('.csv')]
 files = sorted(files)
 #print(files)
 
-# Initialize arrays
 dbin_rel   = np.zeros((len(files), len(dep_bins)-1))  
 dbin_cross = np.zeros((len(files), len(dep_bins)-1))   
 
@@ -45,8 +44,7 @@ with dask.config.set(**{'array.slicing.split_large_chunks': True}):
     for file_name in files:
         print(year)
         
-        df = pd.read_csv(file_name, dtype={'id': int}) 
-        df = df[cols_needed]
+        df = pd.read_csv(file_name, dtype={'id': int}, usecols=cols_needed) 
         
         # set invalid entries to nan, and drop nan entries
         df['z'] = pd.to_numeric(df['z'], errors='coerce')

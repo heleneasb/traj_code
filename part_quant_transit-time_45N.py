@@ -17,9 +17,11 @@ import dask.config
 import warnings
 warnings.filterwarnings("ignore")
 
+#os.environ["OMP_NUM_THREADS"] = "8" 
+
 ###########################################################
 # Read in TRACMASS output and compute trasit times to 45N
-data_path_part = '/Data/gfi/scratch/has078/Tracmass_working_dir/output/gulfstream_GO8p7/' #directory of stored data
+data_path_part = 'YOUR_TRAJ_DATA_PATH'
 
 column_names = ['id', 'x', 'y', 'z', 'vt', 'time', 'wall','temp','salt']
 cols_needed = ['id','y','time']
@@ -38,8 +40,7 @@ year = 1990 #start year
 for file_name in files:
     print(fil)
 
-    df = pd.read_csv(file_name, dtype={'id': int})
-    df = df[cols_needed]
+    df = pd.read_csv(file_name, dtype={'id': int}, usecols=cols_needed)
 
     # Seeding time per particle (first time entry)
     seeding_times = (df
