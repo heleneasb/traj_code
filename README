@@ -45,6 +45,8 @@ Step 2 -- Run the Python scripts, in order
 
 Step 3 -- Run the notebooks
 
+Expected run time using hpc resources is for all scripts to run and figures be produced within 48 hours. 
+
 CONTACT
 ---------
 [Helene Asbjørnsen, University of Bergen, h.asbjornsen@uib.no]
